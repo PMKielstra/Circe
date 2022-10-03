@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{name}}{% if embed %} (embedded){% endif %}</title>
+    <link rel="stylesheet" href="/css/bot.css">
+    {% if not embed %}
+        <link rel="stylesheet" href="/css/bot_standalone.css">
+    {% endif %}
+    <script type="text/javascript" src="/js/botengine.js"></script>
+    <script type="text/javascript" src="../botscript/{{name}}.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+    <div id="bot" class="bot">
+        Bot loading...
+        <noscript>
+            This bot requires JavaScript.  See <a href="https://www.enable-javascript.com/" target="_blank">here</a> for instructions to enable it.
+        </noscript>
+    </div>
+    <script type="text/javascript">
+        launch_bot("bot");
+    </script>
+</body>
+</html>

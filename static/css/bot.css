@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+}
+
+div.bot {
+    background-color: #337B00;
+    width: 100%;
+    height: 100%;
+}
+
+div.bot > div {
+    max-width: 80%;
+    background-color: #56BB0E;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+div.bot > div:not(.human) {
+    margin-right: auto;
+}
+
+div.bot > div.human {
+    background-color: #235500;
+    color: white;
+    margin-left: auto;
+}
+
+div.bot > div.human a {
+    color: white;
+}
