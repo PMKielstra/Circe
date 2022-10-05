@@ -34,9 +34,11 @@ class BotMDRenderer(HTMLRenderer):
         return super().render_raw_text(token).replace(quote, bquote)
 
     def render_inline_code(self, token):
+        """Returns "' + <code> + '" -- this is meant to be used inside what would otherwise be single-quoted strings."""
         return f"' + String({token.children[0].content.replace(quote, bquote)}) + '"
 
     def render_link(self, token):
+        """The usual render_link function for an HTMLRenderer, except altered to open links in new tabs."""
         template = '<a href="{target}"{title} target="_blank">{inner}</a>'
         target = self.escape_url(token.target)
         if token.title:
@@ -46,7 +48,10 @@ class BotMDRenderer(HTMLRenderer):
         inner = self.render_inner(token)
         return template.format(target=target, title=title, inner=inner)
 
+# STEP 2: USING THE EXTENDED PARSER
+
 def render_block(renderer, token: BlockToken):
+    """Render a block as a piece of JavaScript code.  This may or may not involve wrapping it in a call to `say`."""
     if isinstance(token, CodeFence):
         return f"(function () {{ {token.children[0].content} \nnext();}})"
     elif isinstance(token, List) and token.start == None:
@@ -58,14 +63,15 @@ def render_block(renderer, token: BlockToken):
         return f"(function () {{ if ({token.children[0].content}) {{ say('{renderer.render(token).replace(newline, empty)}'); }} else {{ next(); }} }})"
     return f"(function() {{ say('{renderer.render(token).replace(newline, empty)}') }})"
 
-input_re = re.compile(r"Input (\w+) (\w+)(?: \((.+)\))?")
-goto_re = re.compile(r"Go to (.+)")
+input_re = re.compile(r"Input (\w+) (\w+)(?: \((.+)\))?") # Matches special commands of the form Input <name> <text> (<params>)
+goto_re = re.compile(r"Go to (.+)") # Matches special commands of the form Go to <heading>
 
 def render_list(renderer, list):
+    """Render a list in particular as a list of choices.  This deserves its own function since it's both crucial and hard to do."""
     list_options = []
     for sublist in list.children:
         assert 1 <= len(sublist.children) <= 2 # A paragraph for containing the text to give and a list for containing the commands to run.
-        if isinstance(sublist.children[0].children[0], ParaConditionalTag):
+        if isinstance(sublist.children[0].children[0], ParaConditionalTag): # The bullet point can start with "(If `<condition>`), which allows the bot author to only sometimes make some choices available."
             filter = (sublist.children[0].children[0].content)
         else:
             filter = "true"
@@ -75,6 +81,7 @@ def render_list(renderer, list):
         else:
             commands = []
             assert isinstance(sublist.children[1], List)
+            # Parse special commands, treating unrecognizable ones as "Go to"s.
             for command_listitem in sublist.children[1].children:
                 if isinstance(command_listitem.children[0], CodeFence):
                     commands.append(f"(function() {{ {command_listitem.children[0].children[0].content} }})();")
@@ -94,13 +101,14 @@ def render_list(renderer, list):
                 else:
                     raise Exception
             full_list_command = f"(function () {{ {newline.join(commands)} }})"
-        if text == "<p>--</p>":
+        if text == "<p>--</p>": # BotMD uses "--" to mean "Don't actually present this to the user; just run the command."  In particular, this "choice" should have no text.
             text = ""
         list_options.append(f"{{\ntext: (function () {{ return '{text}' }}),\ncommand: {full_list_command},\nfilter: (function () {{return {filter};}})}}")
     return f"(function (){{ choose ([{','.join(list_options)}]) }})"
 
 
 def compile_bot_md(path):
+    """Compile a BotMD bot to JavaScript."""
     with open(path, "r") as file, BotMDRenderer() as renderer:
         doc = Document(file)
         jumps = {}

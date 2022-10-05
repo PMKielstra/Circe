@@ -15,7 +15,7 @@ function go_to(name) {
 
 var loading_indicator = null;
 function show_loading_indicator() {
-    loading_indicator = speak("...");
+    loading_indicator = speak("..."); // The `speak` function is provided in botengine.js.
 }
 
 function next() {
