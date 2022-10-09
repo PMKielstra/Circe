@@ -1,5 +1,11 @@
 * {
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+::selection {
+    background-color: #C95E21;
+    color: white;
 }
 
 body {
