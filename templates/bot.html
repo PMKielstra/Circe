@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/css/bot_standalone.css">
     {% endif %}
     <script type="text/javascript" src="/js/botengine.js"></script>
-    <script type="text/javascript" src="../botscript/{{name}}.js"></script>
+    {{ compile_bot(name) | safe }}
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>

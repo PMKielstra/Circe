@@ -122,4 +122,4 @@ def compile_bot_md(path):
                 len += 1
         full_script = f"[{','.join(script)}, exit]"
         full_jumps = json.dumps(jumps)
-        return render_template("botmd.js", script=full_script, jumps=full_jumps)
+        return f'<script type="text/javascript">{render_template("botmd.js", script=full_script, jumps=full_jumps)}</script>'
