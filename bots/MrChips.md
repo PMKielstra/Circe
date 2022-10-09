@@ -148,11 +148,15 @@ The administrator of this bot server should have told you where this file needs 
 * Done it.
 
 ```
-boturl = window.location.href.replace("MrChips", botname.value)
-if (boturl.slice(-1) == "#") {
-    boturl = boturl.slice(0, -1)
+baseurl = window.location.href.replace("MrChips", "")
+if (baseurl.slice(-1) == "#") {
+    baseurl = baseurl.slice(0, -1)
 }
+boturl = baseurl + botname.value
+resourceurl = baseurl.slice(0, -1) + "static/&lt;filename&gt;"
 ```
+
+If your bot uses any images or other resources, put them into the same folder as the script file.  You can access them at `resourceurl` -- your Markdown script should reference them at that location.
 
 Your bot should now be available at `"<a href=\"" + boturl + "\", target=\"_blank\">" + boturl + "</a>"`.  Have a play!  We'll cover basic scripting next.
 

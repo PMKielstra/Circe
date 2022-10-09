@@ -1,3 +1,4 @@
+from http.client import HTTPException
 from flask import Flask, Response, render_template, request, send_from_directory
 from compiler import CouldNotCompileException, compile_bot, list_bots
 
@@ -18,6 +19,13 @@ def bot(name):
 @app.route('/botstatic/<path>')
 def botstatic(path):
     return send_from_directory('bots', path)
+
+app.config['TRAP_HTTP_EXCEPTIONS'] = True
+@app.errorhandler(Exception)
+def error(e):
+    assert(hasattr(e, "code"))
+    assert(hasattr(e, "description"))
+    return render_template('generic_err.html', exception=e.description), e.code
 
 if __name__ == '__main__':
     app.run()
