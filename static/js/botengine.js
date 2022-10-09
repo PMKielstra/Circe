@@ -14,12 +14,8 @@ function launch_bot(id) {
 // Add a message, in the form of an arbitrary HTML element, to the bot display, as if it were being said either by the bot or by the human.
 function print(utterance, human=false, anim=true) {
     container = document.createElement("div");
-    if (human) {
-        container.className += " human";
-    }
-    if (anim) {
-        container.className += " anim";
-    }
+    if (human) container.className += " human";
+    if (anim) container.className += " anim";
     container.appendChild(utterance);
     bot_display.appendChild(container);
     container.scrollIntoView();
@@ -38,9 +34,7 @@ function speak(utterance, human=false, anim=true) {
 // In these situations, we set `pause` to true.  Then, rather than calling `next`, we can call `gated_next`.
 var pause = false;
 function gated_next() {
-    if (!pause) {
-        next();
-    }
+    if (!pause) next();
 }
 
 // Speak a thing and then go to the next instruction.
@@ -67,9 +61,7 @@ function choose(choices) {
                     speak(text, human=true, anim=false);                    // speak back the selected choice as if it came from the human,
                     choice.command();                                       // run the relevant command,
                     gated_next();                                           // go on if possible,
-                    if (pause) {                                            // and unpause if necessary.  (Sometimes the choice commands will require pausing.)
-                        pause = false;
-                    }
+                    pause = false;                                          // and unpause.  (Sometimes the choice commands will require pausing.)
                 }
                 return print(choice_link, human=true);
             }
