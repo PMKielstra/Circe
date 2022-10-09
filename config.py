@@ -1,0 +1,1 @@
+BOT_FOLDER = 'bots'
