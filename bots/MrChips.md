@@ -238,4 +238,6 @@ That's all there is to it!  Enjoy writing Markdown bots.
 
 * Goodbye, Mr. Chips.
 
+![Goodbye, Mr. Chips](/botstatic/GoodbyeMrChips.jpg)
+
 Goodbye.
