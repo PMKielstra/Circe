@@ -13,7 +13,7 @@ div.bot {
 
 div.bot > div {
     max-width: 80%;
-    background-color: #FFA978;
+    background-color: white;
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
@@ -24,7 +24,7 @@ div.bot > div:not(.human) {
 }
 
 div.bot > div.human {
-    background-color: #7B2C00;
+    background-color: black;
     color: white;
     margin-left: auto;
 }
