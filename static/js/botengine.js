@@ -57,7 +57,7 @@ function choose(choices) {
                 choice_link.href = "#";
                 choice_link.innerHTML = text;
                 choice_link.onclick = function () {                         // When a choice is selected,
-                    choice_elements.forEach(x => {if (x) x.remove(); });    // remove all other choices,
+                    choice_elements.forEach(x => { if (x) x.remove(); });   // remove all other choices,
                     speak(text, human=true, anim=false);                    // speak back the selected choice as if it came from the human,
                     choice.command();                                       // run the relevant command,
                     gated_next();                                           // go on if possible,
