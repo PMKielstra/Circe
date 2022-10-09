@@ -148,7 +148,7 @@ The administrator of this bot server should have told you where this file needs 
 * Done it.
 
 ```
-baseurl = window.location.href.replace("MrChips", "")
+baseurl = window.location.href.replace("Mr%20Chips", "")
 if (baseurl.slice(-1) == "#") {
     baseurl = baseurl.slice(0, -1)
 }
