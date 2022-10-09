@@ -107,7 +107,7 @@ def render_list(renderer, list):
     return f"(function (){{ choose ([{','.join(list_options)}]) }})"
 
 
-def compile_bot_md(path):
+def compile_bot_md(path, _name):
     """Compile a BotMD bot to JavaScript."""
     with open(path, "r") as file, BotMDRenderer() as renderer:
         doc = Document(file)

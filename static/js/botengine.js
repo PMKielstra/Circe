@@ -1,17 +1,28 @@
 var bot_display;
 
-var text_repl = false;
 function request_text_repl(callback) {
-    text_repl = true;
-    while(true) { // TODO: IMPLEMENT THIS PROPERLY
-        callback(prompt);
+    var input_element = document.createElement(input);
+    input_element.type = "text";
+    var submit_button = document.createElement("input");
+    submit_button.type = "submit";
+    var form = document.createElement("form");
+    form.appendChild(input_element);
+    form.appendChild(submit_button);
+    var submit_func = function() {
+        var val = input_element.value;
+        input_element.value = "";
+        callback(val);
+        return false;
     }
+    form.onsubmit = submit_func;                                            // Submit either if the submit button is pressed...
+    input_element.onkeydown = e => { if (e.key == "Enter") submit_func };   // ...or if the enter key is pressed.
+    bot_display.appendChild(form);
 }
 
 function launch_bot(id) {
     bot_display = document.getElementById(id);
     bot_display.innerHTML = "";
-    if (!text_repl) next(); // Start bot -- the `next` function will be provided by the bot's own code.
+    next(); // Start bot -- the `next` function will be provided by the bot's own code.
 }
 
 // Add a message, in the form of an arbitrary HTML element, to the bot display, as if it were being said either by the bot or by the human.
@@ -87,7 +98,7 @@ function choose(choices) {
 }
 
 // Provide a way for the user to give arbitrary input.
-function input(type, params, callback) {
+function input(type, params, callback, call_next = true) {
     pause = true;
     var input_element = document.createElement("input");
     input_element.type = type;
@@ -104,12 +115,14 @@ function input(type, params, callback) {
         submit_button.remove();
         input_element.disabled = true;
         callback(input_element);
-        gated_next();
+        if (call_next) gated_next();
         return false;
     }
     form.onsubmit = submit_func;                                            // Submit either if the submit button is pressed...
     input_element.onkeydown = e => { if (e.key == "Enter") submit_func };   // ...or if the enter key is pressed.
-    return print(form, human=true);
+    var container = print(form, human=true);
+    input_element.focus();
+    return container;
 }
 
 // Quit the bot.  Set pause to true and don't call next.

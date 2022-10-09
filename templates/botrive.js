@@ -1,14 +1,19 @@
 <script type="text/javascript" src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
 <script type="text/javascript">
     var rive = new RiveScript();
-    const rive_code = "{{rive_code}}";
-    if(!rive.stream(rive_code)) {
+    var rivepromise = rive.loadFile("/botstatic/{{name}}.rive");
+    rivepromise.then(loading_done).catch(loading_error);
+    function loading_error() {
         say("Could not compile RiveScript");
-    } else {
+    }
+    function loading_done() {
         rive.sortReplies();
-        const username = "local-user";
-        request_text_repl(function (input) {
-            rive.reply(username, input).then(say);
-        });
+        say("You are now chatting with {{name}}.");
+    }
+    async function next(){
+        await rivepromise;
+        input("text", {}, function(user_input) {
+            rive.reply("local-user", user_input.value).then(say);
+        }, call_next = false);
     }
 </script>

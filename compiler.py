@@ -10,15 +10,15 @@ class CouldNotCompileException(ApiException):
         super().__init__(message)
 
 compilers = [
-    ('md', compile_bot_md)
-#    ('rive', compile_bot_rive)
+    ('md', compile_bot_md),
+    ('rive', compile_bot_rive)
 ]
 
 def compile_bot(name):
     for (ext, compiler) in compilers:
         botpath = f'bots/{name}.{ext}'
         if path.exists(botpath):
-            return compiler(botpath)
+            return compiler(botpath, name)
     raise CouldNotCompileException(f'No compilable file found for bot {name}.')
 
 def check_bot(ext):
