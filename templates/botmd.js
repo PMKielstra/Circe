@@ -1,3 +1,4 @@
+<script type="text/javascript">
 var jumps = {{jumps}};
 
 var script = {{script}};
@@ -25,3 +26,4 @@ function next() {
     }
     script[pointer++]();
 }
+</script>

@@ -1,4 +1,5 @@
 from botmd_compiler import compile_bot_md
+from botrive_compiler import compile_bot_rive
 from os import path, listdir
 from flask_apiexceptions import ApiException
 
@@ -9,7 +10,8 @@ class CouldNotCompileException(ApiException):
         super().__init__(message)
 
 compilers = [
-    ('md', compile_bot_md)
+    ('md', compile_bot_md),
+    ('rive', compile_bot_rive)
 ]
 
 def compile_bot(name):

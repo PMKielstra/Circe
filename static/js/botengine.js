@@ -1,9 +1,17 @@
 var bot_display;
 
+var text_repl = false;
+function request_text_repl(callback) {
+    text_repl = true;
+    while(true) { // TODO: IMPLEMENT THIS PROPERLY
+        callback(prompt);
+    }
+}
+
 function launch_bot(id) {
     bot_display = document.getElementById(id);
     bot_display.innerHTML = "";
-    next(); // Start bot -- the `next` function will be provided by the bot's own code.
+    if (!text_repl) next(); // Start bot -- the `next` function will be provided by the bot's own code.
 }
 
 // Add a message, in the form of an arbitrary HTML element, to the bot display, as if it were being said either by the bot or by the human.

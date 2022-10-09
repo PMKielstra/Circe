@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Rive files (which may be someone else's, since I have no interest in learning Rive)
+*.rive
