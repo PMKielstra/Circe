@@ -10,8 +10,8 @@ class CouldNotCompileException(ApiException):
         super().__init__(message)
 
 compilers = [
-    ('md', compile_bot_md),
-    ('rive', compile_bot_rive)
+    ('md', compile_bot_md)
+#    ('rive', compile_bot_rive)
 ]
 
 def compile_bot(name):
