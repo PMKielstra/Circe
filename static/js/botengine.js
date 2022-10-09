@@ -15,10 +15,13 @@ function launch_bot(id) {
 }
 
 // Add a message, in the form of an arbitrary HTML element, to the bot display, as if it were being said either by the bot or by the human.
-function print(utterance, human=false) {
+function print(utterance, human=false, anim=true) {
     container = document.createElement("div");
     if (human) {
-        container.className = "human";
+        container.className += " human";
+    }
+    if (anim) {
+        container.className += " anim";
     }
     container.appendChild(utterance);
     bot_display.appendChild(container);
@@ -27,10 +30,10 @@ function print(utterance, human=false) {
 }
 
 // Convert text to a paragraph and print it.
-function speak(utterance, human=false) {
+function speak(utterance, human=false, anim=true) {
     var u = document.createElement("p");
     u.innerHTML = utterance;
-    return print(u, human);
+    return print(u, human, anim);
 }
 
 // Sometimes various instructions will require that the bot wait.
@@ -46,7 +49,7 @@ function gated_next() {
 // Speak a thing and then go to the next instruction.
 function say(utterance) {
     speak(utterance);
-    gated_next();
+    setTimeout(gated_next, 200);
 }
 
 // Provide a number of options for the user to choose from.
@@ -64,7 +67,7 @@ function choose(choices) {
                 choice_link.innerHTML = text;
                 choice_link.onclick = function () {                         // When a choice is selected,
                     choice_elements.forEach(x => {if (x) x.remove(); });    // remove all other choices,
-                    speak(text, human=true);                                // speak back the selected choice as if it came from the human,
+                    speak(text, human=true, anim=false);                    // speak back the selected choice as if it came from the human,
                     choice.command();                                       // run the relevant command,
                     gated_next();                                           // go on if possible,
                     if (pause) {                                            // and unpause if necessary.  (Sometimes the choice commands will require pausing.)

@@ -1,3 +1,14 @@
+@keyframes new-bubble {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;	
+	}
+}
+
 * {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -23,6 +34,10 @@ div.bot > div {
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
+}
+
+div.bot > div.anim {
+    animation: new-bubble 0.2s ease;
 }
 
 div.bot > div:not(.human) {
