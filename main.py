@@ -1,8 +1,11 @@
 from flask import Flask, Response, render_template, request
-from os import path
-from compiler import compile_bot
+from compiler import compile_bot, list_bots
 
 app = Flask(__name__, static_url_path='')
+
+@app.route('/')
+def home():
+    return render_template('index.html', bots=list_bots())
 
 @app.route('/bot/<name>')
 def bot(name):

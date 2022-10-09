@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circe</title>
+    <link rel="stylesheet" href="/css/bot.css">
+    <link rel="stylesheet" href="/css/bot_standalone.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+    <div id="bot" class="bot">
+        <div>
+            <p>
+                Welcome to this Circe instance!
+            </p>
+        </div>
+        <div>
+            <p>
+                The following bots are available:
+            </p>
+        </div>
+        {% for bot in bots %}
+            <div class="human">
+                <p>
+                    <a href="/bot/{{bot}}">{{bot}}</a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
