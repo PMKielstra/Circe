@@ -2,10 +2,12 @@ from flask import Flask, render_template, request, send_from_directory
 from compiler import CouldNotCompileException, compile_bot, list_bots
 
 app = Flask(__name__, static_url_path='')
+app.config.from_pyfile('config.py')
+app.config.from_prefixed_env('CIRCE')
 
 @app.route('/')
 def home():
-    return render_template('index.html', bots=list_bots())
+    return render_template('index.html', bots=list_bots(), motd=app.config['MOTD'])
 
 app.jinja_env.globals.update(compile_bot=compile_bot)
 @app.route('/bot/<name>')

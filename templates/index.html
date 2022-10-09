@@ -2,19 +2,27 @@
 {% block bot %}
     <div>
         <p>
-            Welcome to this Circe instance!
+            {{motd}}
         </p>
     </div>
-    <div>
-        <p>
-            The following bots are available:
-        </p>
-    </div>
-    {% for bot in bots %}
-        <div class="human">
+    {% if bots|length > 0 %}
+        <div>
             <p>
-                <a href="/bot/{{bot}}">{{bot}}</a>
+                The following bots are available:
             </p>
         </div>
-    {% endfor %}
+        {% for bot in bots %}
+            <div class="human">
+                <p>
+                    <a href="/bot/{{bot}}">{{bot}}</a>
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+            <div>
+                <p>
+                    Sadly, no bots are currently available.
+                </p>
+            </div>
+    {% endif %}
 {% endblock %}

@@ -2,6 +2,7 @@ from botmd_compiler import compile_bot_md
 from botrive_compiler import compile_bot_rive
 from os import path, listdir
 from flask_apiexceptions import ApiException
+from flask import current_app
 
 class CouldNotCompileException(ApiException):
     status_code = 500
@@ -15,8 +16,9 @@ compilers = [
 ]
 
 def compile_bot(name):
+    botfolder = current_app.config['BOT_FOLDER']
     for (ext, compiler) in compilers:
-        botpath = f'bots/{name}.{ext}'
+        botpath = f'{botfolder}/{name}.{ext}'
         if path.exists(botpath):
             return compiler(botpath, name)
     raise CouldNotCompileException(f'No compilable file found for bot {name}.')
@@ -28,6 +30,6 @@ def check_bot(ext):
     return False
 
 def list_bots():
-    possible_bots = listdir('bots')
+    possible_bots = listdir(current_app.config['BOT_FOLDER'])
     split_bots = [path.splitext(b) for b in possible_bots]
     return [name for (name, ext) in split_bots if check_bot(ext[1:])] # Remove the starting period from the extension
