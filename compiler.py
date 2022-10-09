@@ -4,7 +4,9 @@ from flask_apiexceptions import ApiException
 
 class CouldNotCompileException(ApiException):
     status_code = 500
-    detail = 'Could not compile bot -- no compiler found for this file extension.'
+    def __init__(self, message):
+        self.message = message
+        super().__init__(message)
 
 compilers = [
     ('md', compile_bot_md)
@@ -15,7 +17,7 @@ def compile_bot(name):
         botpath = f'bots/{name}.{ext}'
         if path.exists(botpath):
             return compiler(botpath)
-    raise CouldNotCompileException()
+    raise CouldNotCompileException(f'No compilable file found for bot {name}.')
 
 def check_bot(ext):
     for (cext, _) in compilers:

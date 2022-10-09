@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block bot %}
+    <div>
+        <p>We either couldn't find or couldn't prepare the bot you wanted.</p>
+    </div>
+    <div>
+        <p>{{exception}}</p>
+    </div>
+    <div class="human">
+        <p><a href="/">Go to homepage</a></p>
+    </div>
+{% endblock %}

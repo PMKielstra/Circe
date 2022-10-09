@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Circe{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bot.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    {% block head %}
+        <link rel="stylesheet" href="/css/bot_standalone.css">
+    {% endblock %}
+</head>
+<body>
+    <div id="bot" class="bot">
+        {% block bot %}
+        {% endblock %}
+    </div>
+    {% block foot %}
+    {% endblock %}
+</body>
+</html>
