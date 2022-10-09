@@ -2,12 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="100mm"
-   height="100mm"
-   viewBox="0 0 100 100"
+   width="120mm"
+   height="120mm"
+   viewBox="0 0 120 120"
    version="1.1"
    id="svg5"
-   sodipodi:docname="Favicon.svg"
+   sodipodi:docname="favicon.svg"
    inkscape:version="1.2 (1:1.2.1+202207142221+cd75a1ee6d)"
    inkscape:export-filename="Favicon.png"
    inkscape:export-xdpi="96"
@@ -28,7 +28,7 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.75900673"
-     inkscape:cx="347.823"
+     inkscape:cx="346.50549"
      inkscape:cy="238.46956"
      inkscape:window-width="1920"
      inkscape:window-height="1031"
@@ -38,6 +38,23 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs2">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect964"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,5,0,1 @ F,0,0,1,0,5,0,1 @ F,0,0,1,0,5,0,1 @ F,0,0,1,0,5,0,1"
+       unit="mm"
+       method="auto"
+       mode="F"
+       radius="5"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
     <inkscape:path-effect
        effect="fillet_chamfer"
        id="path-effect1710"
@@ -112,40 +129,53 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#c95d21;fill-opacity:1;stroke-width:0.272406"
+       style="fill:#c95d21;stroke-width:0.214;fill-opacity:1"
+       id="rect350"
+       width="120"
+       height="120"
+       x="-8.8817842e-16"
+       y="-7.7715612e-16"
+       inkscape:path-effect="#path-effect964"
+       d="m 5,0 110,0 a 5,5 45 0 1 5,5 v 110 a 5,5 135 0 1 -5,5 H 5 A 5,5 45 0 1 0,115 V 5 A 5,5 135 0 1 5,0 Z" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.272406"
        id="rect234-3"
        width="80"
        height="20"
-       x="0"
-       y="53.333332"
+       x="10"
+       y="63.333332"
        inkscape:path-effect="#path-effect1708"
-       d="m 5,53.333332 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 5 a 5,5 45 0 1 -5,-5 v -10 a 5,5 135 0 1 5,-5 z" />
-    <rect
-       style="fill:#c95d21;fill-opacity:1;stroke-width:0.272406"
+       d="m 15,63.333332 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 15 a 5,5 45 0 1 -5,-5 v -10 a 5,5 135 0 1 5,-5 z"
+       sodipodi:type="rect" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.272406"
        id="rect234"
        width="80"
        height="20"
-       x="0"
-       y="0"
+       x="10"
+       y="10"
        inkscape:path-effect="#path-effect1704"
-       d="m 5,0 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 5 A 5,5 45 0 1 0,15 V 5 A 5,5 135 0 1 5,0 Z" />
-    <rect
+       d="m 15,10 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 15 A 5,5 45 0 1 10,25 V 15 a 5,5 135 0 1 5,-5 z"
+       sodipodi:type="rect" />
+    <path
        style="fill:#000000;fill-opacity:1;stroke-width:0.272406"
        id="rect234-6"
        width="80"
        height="20"
-       x="20"
-       y="26.666666"
+       x="30"
+       y="36.666668"
        inkscape:path-effect="#path-effect1706"
-       d="m 25,26.666666 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 25 a 5,5 45 0 1 -5,-5 v -10 a 5,5 135 0 1 5,-5 z" />
-    <rect
+       d="m 35,36.666668 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 35 a 5,5 45 0 1 -5,-5 v -10 a 5,5 135 0 1 5,-5 z"
+       sodipodi:type="rect" />
+    <path
        style="fill:#000000;fill-opacity:1;stroke-width:0.272406"
        id="rect234-7"
        width="80"
        height="20"
-       x="20"
-       y="80"
+       x="30"
+       y="90"
        inkscape:path-effect="#path-effect1710"
-       d="m 25,80 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 25 A 5,5 45 0 1 20,95 V 85 a 5,5 135 0 1 5,-5 z" />
+       d="m 35,90 h 70 a 5,5 45 0 1 5,5 v 10 a 5,5 135 0 1 -5,5 H 35 a 5,5 45 0 1 -5,-5 V 95 a 5,5 135 0 1 5,-5 z"
+       sodipodi:type="rect" />
   </g>
 </svg>

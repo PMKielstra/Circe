@@ -1,5 +1,4 @@
-from http.client import HTTPException
-from flask import Flask, Response, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory
 from compiler import CouldNotCompileException, compile_bot, list_bots
 
 app = Flask(__name__, static_url_path='')
