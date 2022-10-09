@@ -16,4 +16,5 @@
             rive.reply("local-user", user_input.value).then(say);
         }, call_next = false);
     }
+    request_self_start();
 </script>

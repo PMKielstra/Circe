@@ -1,28 +1,14 @@
 var bot_display;
 
-function request_text_repl(callback) {
-    var input_element = document.createElement(input);
-    input_element.type = "text";
-    var submit_button = document.createElement("input");
-    submit_button.type = "submit";
-    var form = document.createElement("form");
-    form.appendChild(input_element);
-    form.appendChild(submit_button);
-    var submit_func = function() {
-        var val = input_element.value;
-        input_element.value = "";
-        callback(val);
-        return false;
-    }
-    form.onsubmit = submit_func;                                            // Submit either if the submit button is pressed...
-    input_element.onkeydown = e => { if (e.key == "Enter") submit_func };   // ...or if the enter key is pressed.
-    bot_display.appendChild(form);
+var self_start = false;
+function request_self_start() {
+    self_start = true;
 }
 
 function launch_bot(id) {
     bot_display = document.getElementById(id);
     bot_display.innerHTML = "";
-    next(); // Start bot -- the `next` function will be provided by the bot's own code.
+    if(!self_start) next(); // Start bot -- the `next` function will be provided by the bot's own code.
 }
 
 // Add a message, in the form of an arbitrary HTML element, to the bot display, as if it were being said either by the bot or by the human.
