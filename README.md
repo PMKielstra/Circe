@@ -1,9 +1,10 @@
 # Circe: Readable Chatbots
 
 ## Installation and Configuration
-Clone the repo and run it wth
-
 ```
+git clone https://github.com/PMKielstra/Circe.git
+cd Circe
+pip install -r requirements.txt
 gunicorn main:app
 ```
 
