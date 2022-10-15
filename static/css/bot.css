@@ -1,10 +1,10 @@
 @keyframes new-bubble {
 	from {
-		transform: scale(0);
+		transform: scaleY(0);
 		opacity: 0;
 	}
 	to {
-		transform: scale(1);
+		transform: scaleY(1);
 		opacity: 1;	
 	}
 }
@@ -37,6 +37,7 @@ div.bot > div {
 }
 
 div.bot > div.anim {
+    transform-origin: top left;
     animation: new-bubble 0.2s ease;
 }
 
